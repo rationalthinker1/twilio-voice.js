@@ -17,10 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:twilio/twilio-voice.js.git"
+    "url": "git@github.com:rationalthinker1/twilio-voice.js.git"
   },
   "scripts": {
     "build": "npm-run-all clean build:constants build:errors docs:ts build:es5 build:ts build:dist build:dist-min",
+
     "build:errors": "node ./scripts/errors.js",
     "build:es5": "rimraf ./es5 && babel lib -d es5",
     "build:dev": "ENV=dev npm run build",
@@ -56,7 +57,8 @@
     "test:network": "node ./scripts/karma.js $PWD/karma.network.conf.ts",
     "test:selenium": "mocha tests/browser/index.js",
     "test:unit": "nyc mocha -r ts-node/register ./tests/index.ts",
-    "test:webpack": "cd ./tests/webpack && npm install && npm test"
+    "test:webpack": "cd ./tests/webpack && npm install && npm test",
+    "prepare": "npm run build"
   },
   "pre-commit": [
     "lint",
@@ -102,13 +104,13 @@
     "nyc": "15.0.0",
     "pre-commit": "1.2.2",
     "querystring": "0.2.0",
-    "twilio-release-tool": "1.0.1",
     "selenium-webdriver": "3.6.0",
     "sinon": "9.0.3",
     "travis-multirunner": "4.6.0",
     "ts-node": "8.6.2",
     "tslint": "5.20.1",
     "twilio": "3.39.2",
+    "twilio-release-tool": "1.0.1",
     "typedoc": "0.16.11",
     "typedoc-plugin-as-member-of": "1.0.2",
     "typedoc-plugin-external-module-name": "3.0.0",
@@ -122,14 +124,13 @@
   "dependencies": {
     "@twilio/audioplayer": "1.0.6",
     "@twilio/voice-errors": "1.1.1",
+    "axios": "^0.25.0",
     "backoff": "2.5.0",
     "loglevel": "1.6.7",
     "rtcpeerconnection-shim": "1.2.8",
-    "ws": "7.4.6",
-    "xmlhttprequest": "1.8.0"
+    "ws": "7.4.6"
   },
   "browser": {
-    "xmlhttprequest": "./browser/xmlhttprequest.js",
     "ws": "./browser/ws.js"
   }
 }
